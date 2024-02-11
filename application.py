@@ -9,8 +9,8 @@ app = Flask(__name__)
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Load your CSV data into a DataFrame
-team1_data = pd.read_csv('team1_stats.csv')
-team2_data = pd.read_csv('team2_stats.csv')
+team1_data = pd.read_csv(os.path.join('.', 'data', 'team1_stats.csv'))
+team2_data = pd.read_csv(os.path.join('.', 'data', 'team2_stats.csv'))
 
 @app.route('/generate-prompt', methods=['POST'])
 def generate_prompt():
