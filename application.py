@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import openai
 import pandas as pd
 import os
+import json
 
 app = Flask(__name__)
 
@@ -14,6 +15,7 @@ def generate_prompt():
 
     # Construct your prompt based on the appended_data
     # Modify this according to your specific requirements
+    
     input_json = request.json
     # Load your CSV data into a DataFrame
     team1_data = pd.read_csv(os.path.join('.', 'data', 'team1_stats.csv'))
@@ -46,13 +48,13 @@ def generate_prompt():
         "            \"Ederson\": [1.97, -3.32],"
         "            \"Stefan Ortega\": [-2.61, -3.89],"
         "            \"Kyle Walker\": [-3.04, -3.19],"
-        "            \"Nathan Aké\": [-3.0, -2.57],"
+        "            \"Nathan Ake\": [-3.0, -2.57],"
         "            \"Phil Foden\": [0.78, -0.58],"
         "            \"Bernardo Silva\": [1.85, 3.03],"
         "            \"Rodri\": [-0.31, -2.86],"
-        "            \"Mateo Kovačić\": [-2.31, 0.8],"
+        "            \"Mateo Kovacic\": [-2.31, 0.8],"
         "            \"Erling Haaland\": [-1.35, 3.19],"
-        "            \"Julián Álvarez\": [0.97, 3.88],"
+        "            \"Julian Alvarez\": [0.97, 3.88],"
         "            \"Jeremy Doku\": [-1.02, 4.17]"
         "        }"
         "    }"
@@ -68,14 +70,21 @@ def generate_prompt():
         response = openai.ChatCompletion.create(
             model="gpt-4-0125-preview",  # Specify the GPT-4 model
             messages=messages,
-            max_tokens=60,
+            max_tokens=500,
             temperature=1,
             top_p=1,
         )
 
         # Extract the text response and return it in JSON format
-        text_response = response.choices[0].message.content.strip()
-        return jsonify({"response": text_response})
+        response_str = response.choices[0].message.content.strip()
+        # Remove the code block syntax and correct escaping
+
+        text_response = response_str.lstrip("```json").rstrip("```")
+        text_response = text_response.replace('\n', '')
+
+        text_response = json.loads(text_response)
+
+        return jsonify(text_response)
 
     except Exception as e:
         return jsonify({"error": str(e)})
