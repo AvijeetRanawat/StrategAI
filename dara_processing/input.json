@@ -1,0 +1,36 @@
+{
+    "ManchesterCity": {
+        "Coordinates": {
+            "Ederson": [1.97, -3.52],
+            "Julián Álvarez": [0.97, 4.08],
+            "Stefan Ortega": [-2.61, -4.09],
+            "Phil Foden": [0.78, -0.88],
+            "Kyle Walker": [-3.04, -3.39],
+            "Bernardo Silva": [1.85, 2.73],
+            "Rodri": [-0.31, -3.16],
+            "Mateo Kovačić": [-2.31, 0.5],
+            "Erling Haaland": [-1.35, 3.39],
+            "Nathan Aké": [-3.0, -2.77],
+            "Jeremy Doku": [-1.02, 4.37]
+        },
+        "Score": 1
+    },
+    "Liverpool": {
+        "Coordinates": {
+            "Luis Díaz": [-1.97, 2.64],
+            "Darwin Núñez": [-2.76, 3.15],
+            "Dominik Szoboszlai": [1.71, 0.36],
+            "Virgil van Dijk": [-1.68, -1.51],
+            "Cody Gakpo": [-3.02, 0.55],
+            "Harvey Elliott": [1.13, -0.47],
+            "Trent Alexander-Arnold": [-2.07, -2.11],
+            "Alexis Mac Allister": [-1.35, 0.51],
+            "Alisson": [1.44, -3.65],
+            "Ryan Gravenberch": [-0.81, 1.21],
+            "Joe Gomez": [-3.12, -1.82]
+        },
+        "Score": 2,
+        "BallPossession": "LPlayerName2"
+    },
+    "TimeElapsedInMinutes": 45
+}
