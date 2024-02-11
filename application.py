@@ -124,6 +124,7 @@ def generate_prompt():
         "            }"
         "        ]"
         "    }"
+        "   \"Reason\": \"1-line reason for the optimization of coordinates based on game state\""
         "}"
         " Optimize the team's positions. The output should just be a JSON"
     )
@@ -149,91 +150,6 @@ def generate_prompt():
         text_response = text_response.replace('\n', '')
 
         text_response = json.loads(text_response)
-
-
-        # text_response = {
-        #     "ManchesterCity": {
-        #         "OptimizedCoordinates": [
-        #             {
-        #                 "name": "Bernardo Silva",
-        #                 "Coordinates": [
-        #                     2.2,
-        #                     -0.5
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Ederson",
-        #                 "Coordinates": [
-        #                     0.0,
-        #                     0.0
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Erling Haaland",
-        #                 "Coordinates": [
-        #                     -0.5,
-        #                     1.5
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Jeremy Doku",
-        #                 "Coordinates": [
-        #                     -0.3,
-        #                     2.4
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Julian Alvarez",
-        #                 "Coordinates": [
-        #                     0.97,
-        #                     3.88
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Kyle Walker",
-        #                 "Coordinates": [
-        #                     1.1,
-        #                     -1.7
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Mateo Kovacic",
-        #                 "Coordinates": [
-        #                     -1.5,
-        #                     -1.3
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Nathan Ake",
-        #                 "Coordinates": [
-        #                     -0.8,
-        #                     -2.4
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Phil Foden",
-        #                 "Coordinates": [
-        #                     0.45,
-        #                     -1.2
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Rodri",
-        #                 "Coordinates": [
-        #                     0.2,
-        #                     -2.1
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Stefan Ortega",
-        #                 "Coordinates": [
-        #                     -2.61,
-        #                     -3.89
-        #                 ]
-        #             }
-        #         ]
-        #     }
-        # }
 
 
         return jsonify(text_response)
