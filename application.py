@@ -15,7 +15,7 @@ def generate_prompt():
 
     # Construct your prompt based on the appended_data
     # Modify this according to your specific requirements
-    
+
     input_json = request.json
     # Load your CSV data into a DataFrame
     team1_data = pd.read_csv(os.path.join('.', 'data', 'team1_stats.csv'))
@@ -37,7 +37,7 @@ def generate_prompt():
     )
 
     prompt_part4 = (
-        "The input JSON schema details player coordinates (with precision up to two decimal places within the range -3.2 < X < 3.2 and -4.4 < Y < 4.4), the current score, ball possession, and the match's elapsed time. Manchester City FC owns Y < 0 area throughout the game and tries to goal in the goal post near Y = 4.4. Utilizing player statistics and history from FBRef for both teams, the strategist provides only an output JSON file with optimized positions for all 11 Manchester City FC players, ensuring the suggestions are realistic and achievable within the next minute. The output coordinates are optimized up to two decimal places. The goalkeeper position is fixed throughout the game. The optimized coordinate should also take care that it is not leading to offside. If the input deviates from the specified schema, an error will be prompted for correction, ensuring accuracy in strategic recommendations."
+        "The input JSON schema details player coordinates (with precision up to two decimal places within the range -3.2 < X < 3.2 and -4.4 < Y < 4.4), the current score, ball possession, and the match's elapsed time. Manchester City FC owns Y < 0 area throughout the game and tries to goal in the goal post near Y = 4.4. Utilizing player statistics and history from FBRef for both teams, the strategist provides only an output JSON file with optimized positions for all 11 Manchester City FC players, ensuring the suggestions are realistic and achievable within the next minute, hence make sure that the optimized coordinates are within the range of 0.1 radius from their original coordinates. Also, pay attention to the player who possesses the ball and optimize the coordinates accordingly. The output coordinates are optimized up to two decimal places. The goalkeeper position is fixed throughout the game. The optimized coordinate should also take care that it is not leading to offside. If the input deviates from the specified schema, an error will be prompted for correction, ensuring accuracy in strategic recommendations."
     )
 
     prompt_part5 = (
