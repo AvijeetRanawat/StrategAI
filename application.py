@@ -131,115 +131,115 @@ def generate_prompt():
     # Combine all parts to form the final prompt
     prompt = prompt_part1 + prompt_part2 + prompt_part3 + prompt_part4 + prompt_part5
 
-    messages = [{"role": "user", "content": prompt}]
-    try:
-        response = openai.ChatCompletion.create(
-            model="gpt-4-0125-preview",  # Specify the GPT-4 model
-            messages=messages,
-            max_tokens=500,
-            temperature=1,
-            top_p=1,
-        )
+    # messages = [{"role": "user", "content": prompt}]
+    # try:
+    #     response = openai.ChatCompletion.create(
+    #         model="gpt-4-0125-preview",  # Specify the GPT-4 model
+    #         messages=messages,
+    #         max_tokens=500,
+    #         temperature=1,
+    #         top_p=1,
+    #     )
 
-        # Extract the text response and return it in JSON format
-        response_str = response.choices[0].message.content.strip()
-        # Remove the code block syntax and correct escaping
+    #     # Extract the text response and return it in JSON format
+    #     response_str = response.choices[0].message.content.strip()
+    #     # Remove the code block syntax and correct escaping
 
-        text_response = response_str.lstrip("```json").rstrip("```")
-        text_response = text_response.replace('\n', '')
+    #     text_response = response_str.lstrip("```json").rstrip("```")
+    #     text_response = text_response.replace('\n', '')
 
-        text_response = json.loads(text_response)
-
-
-        # text_response = {
-        #     "ManchesterCity": {
-        #         "OptimizedCoordinates": [
-        #             {
-        #                 "name": "Bernardo Silva",
-        #                 "Coordinates": [
-        #                     2.2,
-        #                     -0.5
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Ederson",
-        #                 "Coordinates": [
-        #                     0.0,
-        #                     0.0
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Erling Haaland",
-        #                 "Coordinates": [
-        #                     -0.5,
-        #                     1.5
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Jeremy Doku",
-        #                 "Coordinates": [
-        #                     -0.3,
-        #                     2.4
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Julian Alvarez",
-        #                 "Coordinates": [
-        #                     0.97,
-        #                     3.88
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Kyle Walker",
-        #                 "Coordinates": [
-        #                     1.1,
-        #                     -1.7
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Mateo Kovacic",
-        #                 "Coordinates": [
-        #                     -1.5,
-        #                     -1.3
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Nathan Ake",
-        #                 "Coordinates": [
-        #                     -0.8,
-        #                     -2.4
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Phil Foden",
-        #                 "Coordinates": [
-        #                     0.45,
-        #                     -1.2
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Rodri",
-        #                 "Coordinates": [
-        #                     0.2,
-        #                     -2.1
-        #                 ]
-        #             },
-        #             {
-        #                 "name": "Stefan Ortega",
-        #                 "Coordinates": [
-        #                     -2.61,
-        #                     -3.89
-        #                 ]
-        #             }
-        #         ]
-        #     }
-        # }
+    #     text_response = json.loads(text_response)
 
 
-        return jsonify(text_response)
+    text_response = {
+        "ManchesterCity": {
+            "OptimizedCoordinates": [
+                {
+                    "name": "Bernardo Silva",
+                    "Coordinates": [
+                        2.2,
+                        -0.5
+                    ]
+                },
+                {
+                    "name": "Ederson",
+                    "Coordinates": [
+                        0.0,
+                        0.0
+                    ]
+                },
+                {
+                    "name": "Erling Haaland",
+                    "Coordinates": [
+                        -0.5,
+                        1.5
+                    ]
+                },
+                {
+                    "name": "Jeremy Doku",
+                    "Coordinates": [
+                        -0.3,
+                        2.4
+                    ]
+                },
+                {
+                    "name": "Julian Alvarez",
+                    "Coordinates": [
+                        0.97,
+                        3.88
+                    ]
+                },
+                {
+                    "name": "Kyle Walker",
+                    "Coordinates": [
+                        1.1,
+                        -1.7
+                    ]
+                },
+                {
+                    "name": "Mateo Kovacic",
+                    "Coordinates": [
+                        -1.5,
+                        -1.3
+                    ]
+                },
+                {
+                    "name": "Nathan Ake",
+                    "Coordinates": [
+                        -0.8,
+                        -2.4
+                    ]
+                },
+                {
+                    "name": "Phil Foden",
+                    "Coordinates": [
+                        0.45,
+                        -1.2
+                    ]
+                },
+                {
+                    "name": "Rodri",
+                    "Coordinates": [
+                        0.2,
+                        -2.1
+                    ]
+                },
+                {
+                    "name": "Stefan Ortega",
+                    "Coordinates": [
+                        -2.61,
+                        -3.89
+                    ]
+                }
+            ]
+        }
+    }
 
-    except Exception as e:
-        return jsonify({"error": str(e)})
+
+    return jsonify(text_response)
+
+    # except Exception as e:
+    #     return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
     # app.run(debug=True)
