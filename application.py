@@ -44,19 +44,85 @@ def generate_prompt():
         "Output JSON Schema will look like this: "
         "{"
         "    \"ManchesterCity\": {"
-        "        \"OptimizedCoordinates\": {"
-        "            \"Ederson\": [1.97, -3.32],"
-        "            \"Stefan Ortega\": [-2.61, -3.89],"
-        "            \"Kyle Walker\": [-3.04, -3.19],"
-        "            \"Nathan Ake\": [-3.0, -2.57],"
-        "            \"Phil Foden\": [0.78, -0.58],"
-        "            \"Bernardo Silva\": [1.85, 3.03],"
-        "            \"Rodri\": [-0.31, -2.86],"
-        "            \"Mateo Kovacic\": [-2.31, 0.8],"
-        "            \"Erling Haaland\": [-1.35, 3.19],"
-        "            \"Julian Alvarez\": [0.97, 3.88],"
-        "            \"Jeremy Doku\": [-1.02, 4.17]"
-        "        }"
+        "        \"OptimizedCoordinates\": ["
+        "            {"
+        "                \"name\": \"Ederson\""
+        "                \"Coordinates\": ["
+        "                    1.97"
+        "                    -3.32"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Stefan Ortega\""
+        "                \"Coordinates\": ["
+        "                    -2.61"
+        "                    -3.89"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Kyle Walker\""
+        "                \"Coordinates\": ["
+        "                    -3.04"
+        "                    -3.19"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Nathan Ake\""
+        "                \"Coordinates\": ["
+        "                    -3.0"
+        "                    -2.57"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Phil Foden\""
+        "                \"Coordinates\": ["
+        "                    0.78"
+        "                    -0.58"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Bernardo Silva\""
+        "                \"Coordinates\": ["
+        "                    1.85"
+        "                    3.03"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Rodri\""
+        "                \"Coordinates\": ["
+        "                    -0.31"
+        "                    -2.86"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Mateo Kovacic\""
+        "                \"Coordinates\": ["
+        "                    -2.31"
+        "                    0.8"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Erling Haaland\""
+        "                \"Coordinates\": ["
+        "                    -1.35"
+        "                    3.19"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Julian Alvarez\""
+        "                \"Coordinates\": ["
+        "                    0.97"
+        "                    3.88"
+        "                ]"
+        "            }"
+        "            {"
+        "                \"name\": \"Jeremy Doku\""
+        "                \"Coordinates\": ["
+        "                    -1.02"
+        "                    4.17"
+        "                ]"
+        "            }"
+        "        ]"
         "    }"
         "}"
         " Optimize the team's positions. The output should just be a JSON"
@@ -84,11 +150,97 @@ def generate_prompt():
 
         text_response = json.loads(text_response)
 
+
+        # text_response = {
+        #     "ManchesterCity": {
+        #         "OptimizedCoordinates": [
+        #             {
+        #                 "name": "Bernardo Silva",
+        #                 "Coordinates": [
+        #                     2.2,
+        #                     -0.5
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Ederson",
+        #                 "Coordinates": [
+        #                     0.0,
+        #                     0.0
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Erling Haaland",
+        #                 "Coordinates": [
+        #                     -0.5,
+        #                     1.5
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Jeremy Doku",
+        #                 "Coordinates": [
+        #                     -0.3,
+        #                     2.4
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Julian Alvarez",
+        #                 "Coordinates": [
+        #                     0.97,
+        #                     3.88
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Kyle Walker",
+        #                 "Coordinates": [
+        #                     1.1,
+        #                     -1.7
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Mateo Kovacic",
+        #                 "Coordinates": [
+        #                     -1.5,
+        #                     -1.3
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Nathan Ake",
+        #                 "Coordinates": [
+        #                     -0.8,
+        #                     -2.4
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Phil Foden",
+        #                 "Coordinates": [
+        #                     0.45,
+        #                     -1.2
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Rodri",
+        #                 "Coordinates": [
+        #                     0.2,
+        #                     -2.1
+        #                 ]
+        #             },
+        #             {
+        #                 "name": "Stefan Ortega",
+        #                 "Coordinates": [
+        #                     -2.61,
+        #                     -3.89
+        #                 ]
+        #             }
+        #         ]
+        #     }
+        # }
+
+
         return jsonify(text_response)
 
     except Exception as e:
         return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    #app.run(host='0.0.0.0',port=5000)
+    # app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5000)
