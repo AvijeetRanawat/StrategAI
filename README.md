@@ -1,4 +1,4 @@
-# Game State Strategist for Manchester City FC
+# StrategAI - Game Stategy Analytics using Gen AI
 
 ## Introduction
 
