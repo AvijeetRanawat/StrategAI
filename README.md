@@ -117,6 +117,10 @@ python strategist.py --input path_to_your_input.json
 ```
 Ensure that player coordinates are within the specified range, and the game state details are accurately represented.
 
+### Unity Project
+
+Please find the drive link for the Unity project [here](https://drive.google.com/drive/folders/1Sij-CPG2QFYgB6fvwQMx6aCE0gtLMGkg?usp=drive_link) since the size was too big to upload on GitHub.
+
 ### Acknowledgments
 
 - Thanks to FBRef for providing comprehensive player statistics.
