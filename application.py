@@ -9,7 +9,8 @@ app = Flask(__name__)
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Load your CSV data into a DataFrame
-csv_data = pd.read_csv('players.csv')
+team1_data = pd.read_csv('team1_stats.csv')
+team2_data = pd.read_csv('team2_stats.csv')
 
 @app.route('/generate-prompt', methods=['POST'])
 def generate_prompt():
@@ -20,12 +21,13 @@ def generate_prompt():
     # This is a simple example; modify according to your CSV structure and requirements
     appended_data = {
         "input": input_data,
-        "csv_data": csv_data.to_dict(orient='records')  # Convert CSV data to a list of dicts
+        "team1_data": team1_data.to_dict(orient='records'),  # Convert CSV data to a list of dicts
+        "team2_data": team2_data.to_dict(orient='records')
     }
 
     # Construct your prompt based on the appended_data
     # Modify this according to your specific requirements
-    prompt = f'''Given the input {appended_data['input']} and additional data {appended_data['csv_data']},
+    prompt = f'''Given the input {appended_data['input']} and additional data {appended_data['team1_data']} and {appended_data['team2_data']},
       what should be the positions of the players. give results in json format'''
     
     messages = [{"role": "user", "content": prompt}]
